@@ -1,0 +1,36 @@
+<app-header></app-header>
+<br>
+<div class="main-div">
+    <mat-card>
+        <form #f="ngForm" (ngSubmit)="submit(f.value)" class="example-form">
+            <mat-card-header style="text-align:center;display: block;">
+                Add Contact
+            </mat-card-header> <br>
+            <mat-form-field class="example-full-width">
+                <input type="text" name="name" [(ngModel)]="name" matInput placeholder="Contact Name" required>
+            </mat-form-field> <br>
+
+            <mat-form-field class="example-full-width">
+                <input type="url" name="url" [(ngModel)]="url" matInput placeholder="User Image Url" required>
+            </mat-form-field> <br>
+
+            <mat-form-field class="example-full-width">
+                <input type="text" name="phone" [(ngModel)]="phone" matInput placeholder="Contact Number" required>
+            </mat-form-field> <br>
+
+            <mat-form-field class="example-full-width">
+                <input name="email" [(ngModel)]="email" matInput placeholder="Contact Email">
+            </mat-form-field> <br>
+             
+            <mat-form-field class="example-full-width">
+                <textarea name="description" [(ngModel)]="description" matInput placeholder="Contact Description"></textarea>
+            </mat-form-field>
+
+            <button *ngIf="!id" type="submit" class="example-full-width" [disabled]="!f.valid" mat-raised-button color="primary">Add
+                Contact</button>
+
+            <button *ngIf="id" type="submit"  class="example-full-width" [disabled]="!f.valid" mat-raised-button color="primary">Save
+                Contact</button>
+        </form>
+    </mat-card>
+</div>

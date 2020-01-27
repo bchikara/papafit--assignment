@@ -1,0 +1,43 @@
+<app-header></app-header>
+<br>
+<div class="search">
+    <mat-form-field>
+        <input #query (keyup)="filter(query.value)" type="text" name="name" matInput placeholder="Search Contact">
+    </mat-form-field>
+</div>
+<div class="main-overview">
+
+
+    <mat-list>
+        <h3 mat-subheader>Favourite Contact</h3>
+        <div *ngFor="let key of keys; let i=index">
+            <mat-list-item *ngIf="tasks[key].important">
+                <a mat-list-icon><img class="contact-img" matListAvatar src="{{tasks[key].url}}"></a>
+                &nbsp;&nbsp;
+                <p mat-line> {{ tasks[key].name }} </p>
+                <h4 mat-line>{{ tasks[key].number }}</h4>
+                <mat-icon (click)="update(key,tasks[key].important)" *ngIf="!tasks[key].important">star_border</mat-icon>
+                <mat-icon (click)="update(key,tasks[key].important)" *ngIf="tasks[key].important">star</mat-icon>
+                <mat-icon (click)="edit(key)">edit</mat-icon>
+                <mat-icon (click)="delete(key)">delete</mat-icon> <br>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </div>
+        <mat-divider></mat-divider>
+        <h3 mat-subheader>Contacts</h3>
+        <mat-list-item *ngFor="let key of keys">
+            <a mat-list-icon><img class="contact-img" matListAvatar src="{{tasks[key].url}}"></a>
+            &nbsp;&nbsp;
+            <p mat-line> {{ tasks[key].name }} </p>
+            <h4 mat-line>{{ tasks[key].number }}</h4>
+            <mat-icon (click)="update(key,tasks[key].important)" *ngIf="!tasks[key].important">star_border</mat-icon>
+            <mat-icon (click)="update(key,tasks[key].important)" *ngIf="tasks[key].important">star</mat-icon>
+            <mat-icon (click)="edit(key)">edit</mat-icon>
+            <mat-icon (click)="delete(key)">delete</mat-icon> <br>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-list>
+</div>
+<div>
+    <button mat-mini-fab color="primary" routerLink="/add">+</button>
+</div>
